@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'register')}">
+<body>
+  <h2>Register</h2>
+  <form th:object="${registerForm}" th:action="@{/register}" method="post" class="form-horizontal">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input id="username" class="form-control" th:field="*{username}" autocomplete="username" autofocus>
+      <div class="text-danger" th:errors="*{username}"></div>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input id="email" type="email" class="form-control" th:field="*{email}" autocomplete="email">
+      <div class="text-danger" th:errors="*{email}"></div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input id="password" type="password" class="form-control" th:field="*{password}" autocomplete="new-password">
+      <div class="text-danger" th:errors="*{password}"></div>
+    </div>
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm password</label>
+      <input id="confirmPassword" type="password" class="form-control" th:field="*{confirmPassword}" autocomplete="new-password">
+      <div class="text-danger" th:errors="*{confirmPassword}"></div>
+    </div>
+    <button class="btn btn-primary" type="submit">Register</button>
+    <a class="btn btn-link" th:href="@{/login}">Already have an account?</a>
+  </form>
+</body>
+</html>
